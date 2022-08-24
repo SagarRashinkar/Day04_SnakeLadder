@@ -20,18 +20,29 @@ public class SnakeLadder {
     public static void main(String[] args) {
         System.out.println("Welcome to Snake Ladder Program!!!");
 
-        int rollValue = rollingDie();
-        int optionValue = checkOptions();
-        System.out.println(optionValue);
-        switch (optionValue){
-            case NO_PLAY:
-                System.out.println("No Play");
-                break;
-            case LADDER:
-                System.out.println("Player will move forward by position "+rollValue);
-                break;
-            case SNAKE:
-                System.out.println("Player will move backward by position "+rollValue);
+        int winPos = 0;
+        while (winPos < 100){
+
+            int optionValue = checkOptions();
+            int rollValue = rollingDie();
+
+            switch (optionValue){
+                case NO_PLAY:
+                    System.out.println("No Play, player position is: "+winPos);
+                    break;
+                case LADDER:
+                    System.out.println("Player will move forward by position "+rollValue);
+                    winPos = winPos + rollValue;
+                    System.out.println("Current player position is: "+winPos);
+                    break;
+                case SNAKE:
+                    System.out.println("Player will move backward by position "+rollValue);
+                    if (winPos < 0){
+                        winPos = 0;
+                    }
+                    winPos = winPos - rollValue;
+                    System.out.println("Current player position is: "+winPos);
+            }
         }
     }
 }
