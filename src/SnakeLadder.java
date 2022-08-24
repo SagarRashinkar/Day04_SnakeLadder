@@ -31,9 +31,18 @@ public class SnakeLadder {
                     System.out.println("No Play, player position is: "+winPos);
                     break;
                 case LADDER:
-                    System.out.println("Player will move forward by position "+rollValue);
                     winPos = winPos + rollValue;
-                    System.out.println("Current player position is: "+winPos);
+                    System.out.println("Player will move forward by position "+rollValue);
+                    if (winPos > 100){
+                        System.out.println("Cant move by this roll value: "+rollValue);
+                        winPos = winPos - rollValue;
+                    } else if (winPos == 100) {
+                        System.out.println("Current player position is: "+winPos);
+                        System.out.println("Player win!!!");
+                        break;
+                    }else {
+                        System.out.println("Current player position is: "+winPos);
+                    }
                     break;
                 case SNAKE:
                     System.out.println("Player will move backward by position "+rollValue);
