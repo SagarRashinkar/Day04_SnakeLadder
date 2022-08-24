@@ -7,8 +7,11 @@ public class SnakeLadder {
     public static final int LADDER = 2;
     public static final int SNAKE = 3;
 
+    public static int dieRollCount = 0;
+
     public static int rollingDie(){
         int rollValue = (int)Math.floor((Math.random() * 10)%6+1);
+        dieRollCount += 1;
         return rollValue;
     }
 
@@ -38,6 +41,7 @@ public class SnakeLadder {
                         winPos = winPos - rollValue;
                     } else if (winPos == 100) {
                         System.out.println("Current player position is: "+winPos);
+                        System.out.println("Total Number of Times Die Rolled to Win is: "+dieRollCount+" Times...");
                         System.out.println("Player win!!!");
                         break;
                     }else {
